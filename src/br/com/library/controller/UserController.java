@@ -21,7 +21,7 @@ private UserDAO dao = new UserDAO();
         dao.delete(id);
     }
     
-    public List<User> obterTodosUsuarios() throws ClassNotFoundException, SQLException{
+    public List<User> getAllUser() throws ClassNotFoundException, SQLException{
         return dao.getAllUser();
     }
 }
