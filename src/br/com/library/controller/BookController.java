@@ -1,11 +1,13 @@
 package br.com.library.controller;
 	import java.sql.*;
 	import java.util.List;
-	import br.com.library.dao.BookDAO;
+import java.util.function.Function;
+
+import br.com.library.dao.BookDAO;
 	import br.com.library.model.Book;
 	
 	
-public class BookController {
+public class BookController implements Functions {
 private BookDAO bookDao = new BookDAO();
 	
 	public void save(Book bookSave) throws ClassNotFoundException, SQLException {
@@ -22,5 +24,6 @@ private BookDAO bookDao = new BookDAO();
 	public List <Book> getAllBooks() throws ClassNotFoundException, SQLException{
 		return bookDao.getAllBooks();
 	}
+
 
 }

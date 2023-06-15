@@ -16,23 +16,28 @@ public class DatabaseUtil {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
             this.conn = DriverManager.getConnection("jdbc:hsqldb:file:./database/dblibrary");
             this.stmt = this.conn.createStatement();
+            
             this.stmt.executeUpdate("CREATE TABLE user (id IDENTITY PRIMARY KEY,"+
             						" nome VARCHAR(50),"+
                                     " cpf VARCHAR(11), "+
                                     " email VARCHAR(50),"+
-                                    " telefone VARCHAR(50));"
-                                    
-                                    + "CREATE TABLE book (id IDENTIFY PRIMARY KEY,"
-                                    + "titulo VARCHAR(100)"
-                                    + "autor VARCHAR(100)"
-                                    + "ano INTEGER" 
-                                    + "editora VARCHAR(30)"
-                                    + "tipoLivro VARCHAR(20)"
-                                    + "secao TEXT ");
-            this.stmt.close();
+                                    " telefone VARCHAR(50));");
+            
+            System.out.println("Tabela user criada com sucesso."); 
+            
+			this.stmt.executeUpdate("CREATE TABLE book (id IDENTITY PRIMARY KEY,"+
+                                    " titulo VARCHAR(100),"+
+                                    " autor VARCHAR(100),"+
+                                    " ano INTEGER," +
+                                    " editora VARCHAR(30),"+
+                                    " tipoLivro VARCHAR(20),"+
+                                    " secao VARCHAR(200));");                      
+
+			System.out.println("Tabela book criada com sucesso.");
+            
+			this.stmt.close();
             this.conn.close();
-            System.out.println("Tabela user criada com sucesso.");
-            System.out.println("Tabela book criada com sucesso.");
+            
         } catch (ClassNotFoundException ex) {
             System.out.println("Classe não encontrada");
             Logger.getLogger(DatabaseUtil.class.getName()).log(Level.SEVERE, null, ex);

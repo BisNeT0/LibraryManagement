@@ -14,11 +14,11 @@ public class Program {
 		UserController userBC = new UserController();
 		BookController bookBC = new BookController();
 		
-		//User usuario = new User("Henrique","123123123","henrique@gmail.com","(75)9 9999 9999");
-		//userBC.save(usuario);
+		User usuario = new User("Henrique","123123123","henrique@gmail.com","(75)9 9999 9999");
+		userBC.save(usuario);
 		
-		//User usuario = new User(1,"Thiago","8888888-888","thiago@gmail.com","(75)9 9999 9999");
-		//userBC.update(usuario);
+//		User usuario = new User(1,"Thiago","8888888-888","thiago@gmail.com","(75)9 9999 9999");
+//		userBC.update(usuario);
 		
 		Book livro = new Book("Além do bem e do mal","Nietzsche",1984,"Época","Físico");
 		bookBC.save(livro);
