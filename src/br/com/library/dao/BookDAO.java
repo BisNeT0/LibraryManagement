@@ -43,11 +43,11 @@ public void save(Book bookSaver) throws ClassNotFoundException, SQLException {
 	String query = "INSERT INTO book ("
 			+ "titulo,"
 			+ "autor,"
-			+ "ano, "
+			+ "ano,"
 			+ "editora,"
 			+ "tipoLivro,"
 			+ "secao)"
-			+ "VALUES (?,?,?,?,?,?) ";
+			+ "VALUES (?,?,?,?,?,?)";
 	createPreparedStatemente(query);
 	this.pmstmt.setString(1, bookSaver.getTitulo());
 	this.pmstmt.setString(2, bookSaver.getAutor());
@@ -67,7 +67,7 @@ public void update(Book bookUpdate) throws ClassNotFoundException, SQLException 
 			+ "editora = ?,"
 			+ "tipoLivro = ?,"
 			+ "secao = ?"
-			+ "WHERE id = ?";
+			+ "WHERE book_id = ?";
 	this.createPreparedStatemente(query);
 	this.pmstmt.setString(1, bookUpdate.getTitulo());
 	this.pmstmt.setString(2, bookUpdate.getAutor());
@@ -82,7 +82,7 @@ public void update(Book bookUpdate) throws ClassNotFoundException, SQLException 
 }
 public void delete(int id) throws ClassNotFoundException, SQLException {
 	this.connect();
-	String query = "DELETE FROM book WHERE id = ?";
+	String query = "DELETE FROM book WHERE book_id = ?";
 	this.createPreparedStatemente(query);
 	this.pmstmt.setInt(1, id);
 	this.pmstmt.execute();
@@ -97,7 +97,7 @@ public List <Book> getAllBooks() throws ClassNotFoundException, SQLException{
 	String query = "SELECT * FROM book";
 	ResultSet rs = this.stmt.executeQuery(query);
 	while(rs.next()) {
-		int id = rs.getInt("id");
+		int id = rs.getInt("book_id");
 		String titulo = rs.getString("titulo");
 		String autor = rs.getString("autor");
 		int ano = rs.getInt("ano");

@@ -17,7 +17,7 @@ public class DatabaseUtil {
             this.conn = DriverManager.getConnection("jdbc:hsqldb:file:./database/dblibrary");
             this.stmt = this.conn.createStatement();
             
-            this.stmt.executeUpdate("CREATE TABLE user (id IDENTITY PRIMARY KEY,"+
+            this.stmt.executeUpdate("CREATE TABLE user (user_id IDENTITY PRIMARY KEY,"+
             						" nome VARCHAR(50),"+
                                     " cpf VARCHAR(11), "+
                                     " email VARCHAR(50),"+
@@ -25,16 +25,26 @@ public class DatabaseUtil {
             
             System.out.println("Tabela user criada com sucesso."); 
             
-			this.stmt.executeUpdate("CREATE TABLE book (id IDENTITY PRIMARY KEY,"+
+			this.stmt.executeUpdate("CREATE TABLE book (book_id IDENTITY PRIMARY KEY,"+
                                     " titulo VARCHAR(100),"+
                                     " autor VARCHAR(100),"+
                                     " ano INTEGER," +
                                     " editora VARCHAR(30),"+
                                     " tipoLivro VARCHAR(20),"+
-                                    " secao VARCHAR(200));");                      
+                                    " secao VARCHAR(200));");    
 
 			System.out.println("Tabela book criada com sucesso.");
+			
+			this.stmt.executeUpdate("CREATE TABLE loan (loan_id IDENTITY PRIMARY KEY,"
+									+ "user_id INTEGER,"
+									+ "book_id INTEGER,"
+									+ "data_emprestimo DATE,"
+									+ "data_devolucao DATE,"
+									+ "FOREIGN KEY(book_id) REFERENCES book(book_id),"
+									+ "FOREIGN KEY(user_id) REFERENCES user(user_id)");
             
+			System.out.println("Tabela loan criada com sucesso.");
+			
 			this.stmt.close();
             this.conn.close();
             

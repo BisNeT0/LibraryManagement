@@ -28,14 +28,6 @@ public class Book {
 		this.editora = editora;
 		this.tipoLivro = tipoLivro;
 	}
-	public Book(String titulo, String autor, int ano, String editora, String tipoLivro) {
-		this.id = id;
-		this.titulo = titulo;
-		this.autor = autor;
-		this.ano = ano;
-		this.editora = editora;
-		this.tipoLivro = tipoLivro;
-	}
 
 	public int getId() {
 		return id;

@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import br.com.library.dao.BookDAO;
 	import br.com.library.model.Book;
+import br.com.library.model.User;
 	
 	
 public class BookController implements Functions {
@@ -23,6 +24,21 @@ private BookDAO bookDao = new BookDAO();
 	}
 	public List <Book> getAllBooks() throws ClassNotFoundException, SQLException{
 		return bookDao.getAllBooks();
+	}
+	@Override
+	public void save(User xpto) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(User xpto) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List<User> getAllUser() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

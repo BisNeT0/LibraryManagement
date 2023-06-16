@@ -41,8 +41,11 @@ public class UserDAO {
         
     public void save(User userSave) throws ClassNotFoundException, SQLException{
        this.connect();
-       String query = "INSERT INTO user "
-               + "(nome, cpf, email, telefone) "
+       String query = "INSERT INTO user ("
+               + "nome,"
+               + "cpf,"
+               + "email,"
+               + "telefone)"
                + "VALUES (?,?,?,?)";
        this.createPreparedStatement(query);
        this.pstmt.setString(1, userSave.getNome());
@@ -55,9 +58,12 @@ public class UserDAO {
     
     public void update(User userUpdate) throws SQLException, ClassNotFoundException{
         this.connect();
-       String query = "UPDATE user "
-               + "set nome =?, cpf=?, email=?, telefone=? "
-               + "WHERE id = ?";
+       String query = "UPDATE user SET"
+               + "nome = ?,"
+               + "cpf = ?,"
+               + "email = ?,"
+               + "telefone = ? "
+               + "WHERE user_id = ?";
        this.createPreparedStatement(query);
        this.pstmt.setString(1, userUpdate.getNome());
        this.pstmt.setString(2, userUpdate.getCpf());
@@ -72,7 +78,7 @@ public class UserDAO {
     public void delete(int id) throws ClassNotFoundException, SQLException{
        this.connect();
        String query = "DELETE FROM user "
-               + "WHERE id = ?";
+               + "WHERE user_id = ?";
        this.createPreparedStatement(query);
        this.pstmt.setInt(1, id);
        this.pstmt.execute();
