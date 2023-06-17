@@ -45,14 +45,16 @@ public class LoanDAO {
 	public void save(Loan loanSaver) throws ClassNotFoundException, SQLException {
 		this.connect();
 		String query = "INSERT INTO loan ("+
-				 "id_user,"+
-				 "id_book,"+
+				 "user_id,"+
+				 "book_id,"+
 				 "data_emprestimo," +
-				 "data_devolucao," +
+				 "data_devolucao)" +
 				 "VALUES (?,?,?,?)";
 		createPreparedStatemente(query);
-		this.pmstmt.setString(1, loanSaver.getDataEmprestimo().toString());
-		this.pmstmt.setString(2, loanSaver.getDataDevolucao().toString());
+		this.pmstmt.setInt(1, loanSaver.getUser_id());
+		this.pmstmt.setInt(2, loanSaver.getBook_id());
+		this.pmstmt.setString(3, loanSaver.getDataEmprestimo());
+		this.pmstmt.setString(4, loanSaver.getDataDevolucao());
 		this.pmstmt.execute();
 		this.disconnect();
 	}
@@ -60,13 +62,16 @@ public class LoanDAO {
 	public void update(Loan loanSaver) throws ClassNotFoundException, SQLException {
 		this.connect();
 		String query = "UPDATE loan SET"
-				+ "id_user = ?,"
-				+ "id_book = ?,"
+				+ "user_id = ?,"
+				+ "book_id = ?,"
 				+ "data_emprestimo = ?,"
 				+ "data_devolucao = ?"
 				+ "WHERE loan_id = ?";
-		this.pmstmt.setString(1, loanSaver.getDataEmprestimo().toString());
-		this.pmstmt.setString(1, loanSaver.getDataDevolucao().toString());
+		this.pmstmt.setInt(1, loanSaver.getUser_id());
+		this.pmstmt.setInt(2, loanSaver.getBook_id());
+		this.pmstmt.setString(3, loanSaver.getDataEmprestimo());
+		this.pmstmt.setString(4, loanSaver.getDataDevolucao());
+		this.pmstmt.setInt(5, loanSaver.getId());
 		this.pmstmt.execute();
 		this.disconnect();
 	}
@@ -84,15 +89,13 @@ public class LoanDAO {
 		String query = "SELECT * FROM loan";
 		ResultSet rs = this.stmt.executeQuery(query);
 		while(rs.next()) {
-			int id_user = rs.getInt("id_user");
-			int id_book = rs.getInt("id_book");		 
-//			SimpleDateFormat stf1 = new SimpleDateFormat("dd/MM/yyyy");
-//			SimpleDateFormat stf2 = new SimpleDateFormat("dd/MM/yyyy");
-//			String data_emprestimo = stf1.toString();
-//			String data_devolucao = stf2.toString();
-			Date data_emprestimo = rs.getDate("data_emprestimo");
-			Date data_devolucao = rs.getDate("data_devolucao");
-			Loan emprestimo  = new Loan(id_user,id_book,data_emprestimo,data_devolucao);
+			int id = rs.getInt("loan_id");
+			int user_id = rs.getInt("user_id");
+			int book_id = rs.getInt("book_id");		 
+			String data_emprestimo = rs.getString("data_emprestimo");
+			String data_devolucao = rs.getString("data_devolucao");
+			Loan emprestimo  = new Loan(id,user_id,book_id,data_emprestimo,data_devolucao);
+			
 			loan.add(emprestimo);
 			
 			this.disconnect();

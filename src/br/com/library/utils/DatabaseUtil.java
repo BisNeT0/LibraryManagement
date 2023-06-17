@@ -19,7 +19,7 @@ public class DatabaseUtil {
             
             this.stmt.executeUpdate("CREATE TABLE user (user_id IDENTITY PRIMARY KEY,"+
             						" nome VARCHAR(50),"+
-                                    " cpf VARCHAR(11), "+
+                                    " cpf VARCHAR(14), "+
                                     " email VARCHAR(50),"+
                                     " telefone VARCHAR(50));");
             
@@ -38,10 +38,10 @@ public class DatabaseUtil {
 			this.stmt.executeUpdate("CREATE TABLE loan (loan_id IDENTITY PRIMARY KEY,"
 									+ "user_id INTEGER,"
 									+ "book_id INTEGER,"
-									+ "data_emprestimo DATE,"
-									+ "data_devolucao DATE,"
-									+ "FOREIGN KEY(book_id) REFERENCES book(book_id),"
-									+ "FOREIGN KEY(user_id) REFERENCES user(user_id)");
+									+ "data_emprestimo VARCHAR(100),"
+									+ "data_devolucao VARCHAR(100),"
+									+ "FOREIGN KEY(user_id) REFERENCES user(user_id),"
+									+ "FOREIGN KEY(book_id) REFERENCES book(book_id))");
             
 			System.out.println("Tabela loan criada com sucesso.");
 			

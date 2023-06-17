@@ -20,6 +20,22 @@ public class Book {
 		this.tipoLivro = tipoLivro;
 		this.secao = secao;
 	}
+	public Book(String titulo, String autor, int ano, String editora, String tipoLivro, String secao) {
+		this.titulo = titulo;
+		this.autor = autor;
+		this.ano = ano;
+		this.editora = editora;
+		this.tipoLivro = tipoLivro;
+		this.secao = secao;
+	}
+	public Book(String titulo, String autor, int ano, String editora, String tipoLivro) {
+		this.titulo = titulo;
+		this.autor = autor;
+		this.ano = ano;
+		this.editora = editora;
+		this.tipoLivro = tipoLivro;
+
+	}
 	public Book(int id, String titulo, String autor, int ano, String editora, String tipoLivro) {
 		this.id = id;
 		this.titulo = titulo;

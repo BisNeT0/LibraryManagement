@@ -92,7 +92,7 @@ public class UserDAO {
         String query = "SELECT * FROM user;";
         ResultSet rs = this.stmt.executeQuery(query);
         while(rs.next()){
-            int id = rs.getInt("id");
+            int id = rs.getInt("user_id");
             String nome = rs.getString("nome");
             String cpf = rs.getString("cpf");
             String email = rs.getString("email");

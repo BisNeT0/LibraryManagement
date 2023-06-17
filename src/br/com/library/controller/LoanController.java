@@ -7,7 +7,7 @@ import br.com.library.dao.LoanDAO;
 import br.com.library.model.Loan;
 
 public class LoanController {
-	LoanDAO dao = new LoanDAO();
+	private LoanDAO dao = new LoanDAO();
     public void save(Loan loanSaver) throws ClassNotFoundException, SQLException{
         dao.save(loanSaver);
     }

@@ -1,58 +1,107 @@
 package br.com.library.model;
 
-import java.util.Date;
 
 public class Loan{
-	private Date dataEmprestimo;
-	private Date dataDevolucao;
-	private int id_user;
-	private int id_book;
+	private String dataEmprestimo;
+	private String dataDevolucao;
+	private int id;
+	private int user_id;
+	private int book_id;
 	
 	public Loan() {}
-	public Loan(int id_user,int id_book,Date dataEmprestimo, Date dataDevolucao) {
-		this.id_user = id_user;
-		this.id_book = id_book;
+	
+
+	public Loan(int user_id,int book_id,String dataEmprestimo, String dataDevolucao) {
+		this.user_id = user_id;
+		this.book_id = book_id;
 		this.dataDevolucao = dataDevolucao;
 		this.dataEmprestimo = dataDevolucao;
 	}
-	public Loan(int id_user, int id_book) {
-		this.id_user = id_user;
-		this.id_book = id_book;
+
+	public Loan(int id, int user_id,int book_id,String dataEmprestimo, String dataDevolucao) {
+		this.id = id;
+		this.user_id = user_id;
+		this.book_id = book_id;
+		this.dataDevolucao = dataDevolucao;
+		this.dataEmprestimo = dataDevolucao;
+	}
+	public Loan(int user_id,int book_id,String dataEmprestimo) {
+		this.user_id = user_id;
+		this.book_id = book_id;
+		this.dataEmprestimo = dataDevolucao;
+	}
+	public Loan(int user_id, int book_id) {
+		this.user_id = user_id;
+		this.book_id = book_id;
 	}
 	
-	public Loan(Date dataEmprestimo, Date dataDevolucao) {
+	public Loan(String dataEmprestimo, String dataDevolucao) {
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataDevolucao = dataDevolucao;
 	}
 	
-	public Date getDataEmprestimo() {
+	public Loan(String dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
+	}
+
+
+	public String getDataEmprestimo() {
 		return dataEmprestimo;
 	}
-	public void setDataEmprestimo(Date dataEmprestimo) {
+
+
+	public void setDataEmprestimo(String dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
-	public Date getDataDevolucao() {
+
+
+	public String getDataDevolucao() {
 		return dataDevolucao;
 	}
-	public void setDataDevolucao(Date dataDevolucao) {
+
+
+	public void setDataDevolucao(String dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
-	public int getId_user() {
-		return id_user;
+
+
+	public int getId() {
+		return id;
 	}
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public int getId_book() {
-		return id_book;
+
+
+	public int getUser_id() {
+		return user_id;
 	}
-	public void setId_book(int id_book) {
-		this.id_book = id_book;
+
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
+
+
+	public int getBook_id() {
+		return book_id;
+	}
+
+
+	public void setBook_id(int book_id) {
+		this.book_id = book_id;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Loan [dataEmprestimo=" + dataEmprestimo + ", dataDevolucao=" + dataDevolucao + ", id_user=" + id_user
-				+ ", id_book=" + id_book + "]";
+		return "Loan [dataEmprestimo=" + dataEmprestimo + ", dataDevolucao=" + dataDevolucao + ", id=" + id
+				+ ", user_id=" + user_id + ", book_id=" + book_id + "]";
 	}
+	
+
+
 	
 }
