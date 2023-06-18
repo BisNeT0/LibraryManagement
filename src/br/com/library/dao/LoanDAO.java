@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+import br.com.library.model.Book;
 import br.com.library.model.Loan;
+import br.com.library.model.User;
 
 public class LoanDAO {
 	private Connection conn;
@@ -42,21 +43,22 @@ public class LoanDAO {
 			this.conn.close();
 	}
 
-	public void save(Loan loanSaver) throws ClassNotFoundException, SQLException {
-		this.connect();
-		String query = "INSERT INTO loan ("+
-				 "user_id,"+
-				 "book_id,"+
-				 "data_emprestimo," +
-				 "data_devolucao)" +
-				 "VALUES (?,?,?,?)";
-		createPreparedStatemente(query);
-		this.pmstmt.setInt(1, loanSaver.getUser_id());
-		this.pmstmt.setInt(2, loanSaver.getBook_id());
-		this.pmstmt.setString(3, loanSaver.getDataEmprestimo());
-		this.pmstmt.setString(4, loanSaver.getDataDevolucao());
-		this.pmstmt.execute();
-		this.disconnect();
+	public void saveLoan(Loan loanSaver) throws ClassNotFoundException, SQLException {
+	    this.connect();
+	    String query = "INSERT INTO loan (" +
+	            "user_id," +
+	            "book_id," +
+	            "data_emprestimo," +
+	            "data_devolucao)" +
+	            "VALUES (?,?,?,?)";
+	    createPreparedStatemente(query);
+	    this.pmstmt.setInt(1, loanSaver.getUser_id());
+	    this.pmstmt.setInt(2, loanSaver.getBook_id());
+	    this.pmstmt.setString(3, loanSaver.getDataEmprestimo());
+	    this.pmstmt.setString(4, loanSaver.getDataDevolucao());
+	    this.pmstmt.execute();
+	    this.disconnect();
+	   
 	}
 	
 	public void update(Loan loanSaver) throws ClassNotFoundException, SQLException {

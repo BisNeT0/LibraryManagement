@@ -25,12 +25,9 @@ public class Program {
 		LoanController loanBC = new LoanController();
 		User novoUsuario = new User();
 		Book novoLivro = new Book();
+		Loan novoEmprestimo = new Loan();
 		
 		
-//		User usuario = new User("Henrique","123.456.789-10","henrique@gmail.com","(75)9 9876-5432");
-//		userBC.save(usuario);
-//		User usuario2 = new User("Kaike","109.876.543-21","kaike@gmail.com","(75)9 1098-7654");
-//		userBC.save(usuario2);
 		
 //		User usuario = new User(1,"Thiago","8888888-888","thiago@gmail.com","(75)9 9999 9999");
 //		userBC.update(usuario);
@@ -43,10 +40,7 @@ public class Program {
 		//userBC.delete(0);
 		
 		
-        LocalDateTime now = LocalDateTime.now();
-        String pattern = "dd/MM/yyyy HH:mm:ss";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-        String formattedDateTime = now.format(formatter);
+        
 
         String testeEntrega = "22/04/2024 15:45:08";
         
@@ -54,11 +48,6 @@ public class Program {
 //		loanBC.save(loan);
 		
 		
-//		List<Book> listBooks = bookBC.getAllBooks();
-//		for(Book livr:listBooks) {
-//			System.out.println(livr);
-//			
-//		}
 		
 //		List<Loan> listLoan = loanBC.getAllLoan();
 //		for(Loan loan2:listLoan) {
@@ -66,7 +55,7 @@ public class Program {
 //			
 //		}
 		int sair =0;
-		while(sair!=7) {
+		while(sair!=8) {
 			
 			int menu = Integer.parseInt(JOptionPane.showInputDialog("---------------[MENU]--------------- "
 					+ "\n1- Cadastrar Usuário "
@@ -74,8 +63,9 @@ public class Program {
 					+ "\n3- Cadastrar Livro "
 					+ "\n4- Listar Livros "
 					+ "\n5- Realizar Empréstimo "
-					+ "\n6- Realizar Devolução "
-					+ "\n7- SAIR"));
+					+ "\n6- Listar Empréstimos "
+					+ "\n7- Realizar Devolução "
+					+ "\n8- SAIR"));
 			
 			switch(menu) {
 			case 1:
@@ -117,9 +107,26 @@ public class Program {
 				}
 				break;
 				
+			case 5:
+				novoEmprestimo.setUser_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do usuário que realizará o empréstimo:\n"+userBC.getAllUser())));
+				novoEmprestimo.setBook_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser emprestado:\n"+userBC.getAllBooks())));
+				LocalDateTime now = LocalDateTime.now();
+		        String pattern = "dd/MM/yyyy HH:mm:ss";
+		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		        String formattedDateTime = now.format(formatter);
+		        novoEmprestimo.setDataEmprestimo(formattedDateTime);
+		        novoEmprestimo.setDataDevolucao(JOptionPane.showInputDialog("Digite a data para devolução: (dd/MM/yyyy HH:mm:ss)\n")); 
+		        loanBC.save(novoEmprestimo);
+		        break;
+
+			case 6:
+				for (int i=0;i<1;i++) {
+					JOptionPane.showMessageDialog(null, loanBC.getAllLoan());
+				}
+				break;
 			default:
 				JOptionPane.showMessageDialog(null,"Obrigado por usar o nosso sistema. Até mais 👋");
-				sair = 7;
+				sair = 8;
 				break;
 			}
 		}

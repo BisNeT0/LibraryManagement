@@ -77,8 +77,15 @@ public class Loan{
 
 	@Override
 	public String toString() {
-		return "Loan [id=" + id + ", user_id=" + user_id + ", book_id=" + book_id + ", dataEmprestimo=" + dataEmprestimo
-				+ ", dataDevolucao=" + dataDevolucao + "]";
+		return 
+				"DADOS DO EMPRÉSTIMO "+id+":"+"\n\n"
+				+ "ID: "+id+"\n"
+				+ "ID DO USUÁRIO: "+user_id+"\n"
+				+ "ID DO LIVRO: "+book_id+"\n"
+				+ "DATA DE EMPRÉSTIMO: "+dataEmprestimo+"\n"
+				+ "DATA DE DEVOLUÇÃO: "+dataDevolucao
+				+ "\n--------------------------------------------------------------\n";
+
 	}
 
 
