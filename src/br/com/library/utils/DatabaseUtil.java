@@ -41,7 +41,7 @@ public class DatabaseUtil {
 									+ "data_emprestimo VARCHAR(100),"
 									+ "data_devolucao VARCHAR(100),"
 									+ "FOREIGN KEY(user_id) REFERENCES user(user_id),"
-									+ "FOREIGN KEY(book_id) REFERENCES book(book_id))");
+									+ "FOREIGN KEY(book_id) REFERENCES book(book_id));");
             
 			System.out.println("Tabela loan criada com sucesso.");
 			

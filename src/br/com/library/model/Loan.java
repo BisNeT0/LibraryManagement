@@ -2,43 +2,23 @@ package br.com.library.model;
 
 
 public class Loan{
-	private String dataEmprestimo;
-	private String dataDevolucao;
 	private int id;
 	private int user_id;
 	private int book_id;
+	private String dataEmprestimo;
+	private String dataDevolucao;
 	
 	public Loan() {}
 	
-
-	public Loan(int user_id,int book_id,String dataEmprestimo, String dataDevolucao) {
-		this.user_id = user_id;
-		this.book_id = book_id;
-		this.dataDevolucao = dataDevolucao;
-		this.dataEmprestimo = dataDevolucao;
-	}
 
 	public Loan(int id, int user_id,int book_id,String dataEmprestimo, String dataDevolucao) {
 		this.id = id;
 		this.user_id = user_id;
 		this.book_id = book_id;
-		this.dataDevolucao = dataDevolucao;
-		this.dataEmprestimo = dataDevolucao;
-	}
-	public Loan(int user_id,int book_id,String dataEmprestimo) {
-		this.user_id = user_id;
-		this.book_id = book_id;
-		this.dataEmprestimo = dataDevolucao;
-	}
-	public Loan(int user_id, int book_id) {
-		this.user_id = user_id;
-		this.book_id = book_id;
-	}
-	
-	public Loan(String dataEmprestimo, String dataDevolucao) {
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataDevolucao = dataDevolucao;
 	}
+	
 	
 	public Loan(String dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
@@ -97,9 +77,12 @@ public class Loan{
 
 	@Override
 	public String toString() {
-		return "Loan [dataEmprestimo=" + dataEmprestimo + ", dataDevolucao=" + dataDevolucao + ", id=" + id
-				+ ", user_id=" + user_id + ", book_id=" + book_id + "]";
+		return "Loan [id=" + id + ", user_id=" + user_id + ", book_id=" + book_id + ", dataEmprestimo=" + dataEmprestimo
+				+ ", dataDevolucao=" + dataDevolucao + "]";
 	}
+
+
+	
 	
 
 

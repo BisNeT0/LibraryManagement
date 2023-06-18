@@ -97,9 +97,9 @@ public class LoanDAO {
 			Loan emprestimo  = new Loan(id,user_id,book_id,data_emprestimo,data_devolucao);
 			
 			loan.add(emprestimo);
-			
-			this.disconnect();
+
 		}
+		this.disconnect();
 		return loan;
 	}
 
