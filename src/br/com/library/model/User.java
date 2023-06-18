@@ -1,6 +1,6 @@
 package br.com.library.model;
 
-public class User {
+public class User extends Loan{
 	private int id;
 	private String nome,cpf,email,telefone;
 	
@@ -64,8 +64,13 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", telefone=" + telefone
-				+ "]";
+		return "DADOS DO USUÁRIO "+id+":"+"\n\n"
+				+ "ID: "+id+"\n"
+				+ "NOME: "+nome+"\n"
+				+ "CPF: "+cpf+"\n"
+				+ "E-MAIL: "+email+"\n"
+				+ "TELEFONE: "+telefone
+				+ "\n---------------------------------------\n";
 	}
 	
 	

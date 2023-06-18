@@ -1,6 +1,6 @@
 package br.com.library.model;
 
-public class Book {
+public class Book extends Loan{
 	private int id;
 	private String titulo;
 	private String autor;
@@ -103,16 +103,17 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + 
-				", titulo=" + titulo + 
-				", autor=" + autor + 
-				", ano=" + ano + 
-				", editora=" + 
-				editora
-				+ ", tipoLivro=" + 
-				tipoLivro + 
-				", secao=" + 
-				secao + "]";
+		return 	
+				"DADOS DO LIVRO "+id+":"+"\n\n"			
+				+ "ID: "+id+"\n"
+				+ "TITULO: "+titulo+"\n"
+				+ "AUTOR: "+autor+"\n"
+				+ "ANO: "+ano+"\n"
+				+ "EDITORA: "+editora+"\n"
+				+ "TIPO DE LIVRO: "+tipoLivro+"\n"
+				+ "SEÇÃO: "+secao
+				+ "\n---------------------------------------\n";
+				
 	}
 	
 	
