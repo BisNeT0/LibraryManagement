@@ -34,17 +34,18 @@ public class Program {
 		
 
 		int sair =0;
-		while(sair!=8) {
+		while(sair!=9) {
 			
 			int menu = Integer.parseInt(JOptionPane.showInputDialog("---------------[MENU]--------------- "
 					+ "\n1- Cadastrar Usuário "
 					+ "\n2- Listar Usuários "
 					+ "\n3- Cadastrar Livro "
-					+ "\n4- Listar Livros "
-					+ "\n5- Realizar Empréstimo "
-					+ "\n6- Listar Empréstimos "
-					+ "\n7- Realizar Devolução "
-					+ "\n8- SAIR"));
+					+ "\n4- Excluir Livro "
+					+ "\n5- Listar Livros "
+					+ "\n6- Realizar Empréstimo "
+					+ "\n7- Listar Empréstimos "
+					+ "\n8- Realizar Devolução "
+					+ "\n9- SAIR"));
 			
 			switch(menu) {
 			case 1:
@@ -79,14 +80,46 @@ public class Program {
 					bookBC.save(novoLivro);
 				}
 				break;
-			
 			case 4:
+				int exclusaoLivro = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser excluído:\n" + bookBC.getAllBooks()));
+
+				List<Loan> loanList = loanBC.getAllLoan();
+				boolean emprestimoEncontrado = false;
+
+				for (Loan emprestimo : loanList) {
+				    if (exclusaoLivro == emprestimo.getBook_id()) {
+				        emprestimoEncontrado = true;
+				        break;
+				    }
+				}
+
+				if (emprestimoEncontrado) {
+				    JOptionPane.showMessageDialog(null, "Não é possível excluir o livro, pois existem empréstimos relacionados a ele!");
+				} else {
+				    List<Book> bookList = bookBC.getAllBooks();
+				    boolean livroEncontrado = false;
+
+				    for (Book exclusao : bookList) {
+				        if (exclusaoLivro == exclusao.getId()) {
+				            bookBC.delete(exclusaoLivro);
+				            JOptionPane.showMessageDialog(null, "Livro excluído!");
+				            livroEncontrado = true;
+				            break;
+				        }
+				    }
+
+				    if (!livroEncontrado) {
+				        JOptionPane.showMessageDialog(null, "Livro não encontrado!");
+				    }
+				}
+
+			case 5:
 				for (int i=0;i<1;i++) {
 					JOptionPane.showMessageDialog(null, bookBC.getAllBooks());
 				}
 				break;
 				
-			case 5:
+			case 6:
 				novoEmprestimo.setUser_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do usuário que realizará o empréstimo:\n"+userBC.getAllUser())));
 				novoEmprestimo.setBook_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser emprestado:\n"+userBC.getAllBooks())));
 				LocalDateTime now = LocalDateTime.now();
@@ -98,36 +131,36 @@ public class Program {
 		        loanBC.realizarEmprestimo(novoEmprestimo);
 		        break;
 
-			case 6:
+			case 7:
 				for (int i=0;i<1;i++) {
 					JOptionPane.showMessageDialog(null, loanBC.getAllLoan());
 				}
 				break;
-			case 7:
+			case 8:
 				
 				int devolucaoEmprestimo = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do empréstimo que será devoldido:\n" + loanBC.getAllLoan()));
 
 				for (int i = 0; i < 1; i++) {
-				    List<Loan> loanList = loanBC.getAllLoan();
-				    boolean emprestimoEncontrado = false;
+				    List<Loan> loanList2 = loanBC.getAllLoan();
+				    boolean emprestimoEncontrado2 = false;
 
-				    for (Loan emprestimo : loanList) {
+				    for (Loan emprestimo : loanList2) {
 				        if (devolucaoEmprestimo == emprestimo.getId()) {
 				            loanBC.deletarEmprestimo(devolucaoEmprestimo);
 				            JOptionPane.showMessageDialog(null, "Empréstimo encerrado!");
-				            emprestimoEncontrado = true;
+				            emprestimoEncontrado2 = true;
 				            break;
 				        }
 				    }
 
-				    if (!emprestimoEncontrado) {
+				    if (!emprestimoEncontrado2) {
 				        JOptionPane.showMessageDialog(null, "Empréstimo não encontrado!");
 				    }
 				}
 				break;
 			default:
 				JOptionPane.showMessageDialog(null,"Obrigado por usar o nosso sistema. Até mais 👋");
-				sair = 8;
+				sair = 9;
 				break;
 			}
 		}
