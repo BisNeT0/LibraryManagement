@@ -34,18 +34,19 @@ public class Program {
 		
 
 		int sair =0;
-		while(sair!=9) {
+		while(sair!=10) {
 			
 			int menu = Integer.parseInt(JOptionPane.showInputDialog("---------------[MENU]--------------- "
 					+ "\n1- Cadastrar Usuário "
 					+ "\n2- Listar Usuários "
 					+ "\n3- Cadastrar Livro "
 					+ "\n4- Excluir Livro "
-					+ "\n5- Listar Livros "
-					+ "\n6- Realizar Empréstimo "
-					+ "\n7- Listar Empréstimos "
-					+ "\n8- Realizar Devolução "
-					+ "\n9- SAIR"));
+					+ "\n5- Procurar por título ou autor "
+					+ "\n6- Listar Livros "
+					+ "\n7- Realizar Empréstimo "
+					+ "\n8- Listar Empréstimos "
+					+ "\n9- Realizar Devolução "
+					+ "\n10- SAIR"));
 			
 			switch(menu) {
 			case 1:
@@ -80,6 +81,27 @@ public class Program {
 					bookBC.save(novoLivro);
 				}
 				break;
+			case 5:
+				String procuraTituloAutor = JOptionPane.showInputDialog("Digite o título ou autor da obra a ser procurada:\n");
+
+				List<Book> tituloAutorList = bookBC.getAllBooks();
+				boolean tituloAutorEncontrado = false;
+
+				for (Book tituloAutor : tituloAutorList) {
+				    if (procuraTituloAutor == tituloAutor.getTitulo()||procuraTituloAutor == tituloAutor.getAutor()) {
+				    	tituloAutorEncontrado = true;
+				        break;
+				    }
+				}
+
+				if (tituloAutorEncontrado) {
+				    JOptionPane.showMessageDialog(null, bookBC.getAllBooks());
+				} 
+
+				    if (!tituloAutorEncontrado) {
+				        JOptionPane.showMessageDialog(null, "Livro não encontrado!");
+				    }
+				break;
 			case 4:
 				int exclusaoLivro = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser excluído:\n" + bookBC.getAllBooks()));
 
@@ -113,13 +135,13 @@ public class Program {
 				    }
 				}
 
-			case 5:
+			case 6:
 				for (int i=0;i<1;i++) {
 					JOptionPane.showMessageDialog(null, bookBC.getAllBooks());
 				}
 				break;
 				
-			case 6:
+			case 7:
 				novoEmprestimo.setUser_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do usuário que realizará o empréstimo:\n"+userBC.getAllUser())));
 				novoEmprestimo.setBook_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser emprestado:\n"+userBC.getAllBooks())));
 				LocalDateTime now = LocalDateTime.now();
@@ -131,12 +153,12 @@ public class Program {
 		        loanBC.realizarEmprestimo(novoEmprestimo);
 		        break;
 
-			case 7:
+			case 8:
 				for (int i=0;i<1;i++) {
 					JOptionPane.showMessageDialog(null, loanBC.getAllLoan());
 				}
 				break;
-			case 8:
+			case 9:
 				
 				int devolucaoEmprestimo = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do empréstimo que será devoldido:\n" + loanBC.getAllLoan()));
 
@@ -160,7 +182,7 @@ public class Program {
 				break;
 			default:
 				JOptionPane.showMessageDialog(null,"Obrigado por usar o nosso sistema. Até mais 👋");
-				sair = 9;
+				sair = 10;
 				break;
 			}
 		}

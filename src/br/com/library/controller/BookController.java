@@ -26,6 +26,7 @@ private BookDAO bookDao = new BookDAO();
 	public List <Book> getAllBooks() throws ClassNotFoundException, SQLException{
 		return bookDao.getAllBooks();
 	}
+
 	@Override
 	public void save(User xpto) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
