@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JOptionPane;
-
 import br.com.library.controller.BookController;
 import br.com.library.controller.LoanController;
 import br.com.library.controller.UserController;
@@ -32,28 +31,8 @@ public class Program {
 //		User usuario = new User(1,"Thiago","8888888-888","thiago@gmail.com","(75)9 9999 9999");
 //		userBC.update(usuario);
 		
-//		Book livro = new Book("Além do bem e do mal","Nietzsche",1886,"Companhia de Bolso","Físico","Cientifico");
-//		bookBC.save(livro);
-//		Book livro2 = new Book("O Príncipe","Maquiavel",1532,"Edipro","Físico","Não-ficção");
-//		bookBC.save(livro2);
 		
-		//userBC.delete(0);
-		
-		
-        
 
-        String testeEntrega = "22/04/2024 15:45:08";
-        
-//		Loan loan = new Loan(0,1,1,formattedDateTime,testeEntrega);
-//		loanBC.save(loan);
-		
-		
-		
-//		List<Loan> listLoan = loanBC.getAllLoan();
-//		for(Loan loan2:listLoan) {
-//			
-//			
-//		}
 		int sair =0;
 		while(sair!=8) {
 			
@@ -122,6 +101,28 @@ public class Program {
 			case 6:
 				for (int i=0;i<1;i++) {
 					JOptionPane.showMessageDialog(null, loanBC.getAllLoan());
+				}
+				break;
+			case 7:
+				
+				int devolucaoEmprestimo = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do empréstimo que será devoldido:\n" + loanBC.getAllLoan()));
+
+				for (int i = 0; i < 1; i++) {
+				    List<Loan> loanList = loanBC.getAllLoan();
+				    boolean emprestimoEncontrado = false;
+
+				    for (Loan emprestimo : loanList) {
+				        if (devolucaoEmprestimo == emprestimo.getId()) {
+				            loanBC.delete(devolucaoEmprestimo);
+				            JOptionPane.showMessageDialog(null, "Empréstimo encerrado!");
+				            emprestimoEncontrado = true;
+				            break;
+				        }
+				    }
+
+				    if (!emprestimoEncontrado) {
+				        JOptionPane.showMessageDialog(null, "Empréstimo não encontrado!");
+				    }
 				}
 				break;
 			default:

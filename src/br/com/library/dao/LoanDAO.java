@@ -78,12 +78,17 @@ public class LoanDAO {
 		this.disconnect();
 	}
 	public void delete(int id) throws ClassNotFoundException, SQLException {
-		this.connect();
-		String query = "DELETE FROM loan WHERE id = ?";
-		this.pmstmt.setInt(1, id);
-		this.pmstmt.execute();
-		this.disconnect();
+	    try {
+	        this.connect();
+	        String query = "DELETE FROM loan WHERE loan_id = ?";
+	        this.pmstmt = this.conn.prepareStatement(query);
+	        this.pmstmt.setInt(1, id);
+	        this.pmstmt.executeUpdate();
+	    } finally {
+	        this.disconnect();
+	    }
 	}
+
 	public List<Loan> getAllLoan() throws ClassNotFoundException, SQLException{
 		this.connect();
 		this.createStatement();
