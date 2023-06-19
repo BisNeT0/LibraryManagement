@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import br.com.library.dao.BookDAO;
 	import br.com.library.model.Book;
+import br.com.library.model.Loan;
 import br.com.library.model.User;
 	
 	
@@ -37,6 +38,26 @@ private BookDAO bookDao = new BookDAO();
 	}
 	@Override
 	public List<User> getAllUser() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void realizarEmprestimo(Loan loanSaver) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void atualizarEmprestimo(Loan loanSaver) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void deletarEmprestimo(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List<Loan> getAllLoan() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

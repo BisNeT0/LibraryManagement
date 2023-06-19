@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.library.model.Book;
+import br.com.library.model.Loan;
 import br.com.library.model.User;
 
 public interface Functions {
@@ -18,4 +19,13 @@ public interface Functions {
     public List<User> getAllUser() throws ClassNotFoundException, SQLException;
     
     public void delete(int id) throws ClassNotFoundException, SQLException;
+    //---------------------------------Loan-----------------------------//
+    public void realizarEmprestimo(Loan loanSaver) throws ClassNotFoundException, SQLException;
+    
+    public void atualizarEmprestimo(Loan loanSaver) throws ClassNotFoundException, SQLException;
+    
+    public void deletarEmprestimo(int id) throws ClassNotFoundException, SQLException;
+    
+    public List<Loan> getAllLoan() throws ClassNotFoundException, SQLException;
 }
+

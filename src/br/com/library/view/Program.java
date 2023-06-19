@@ -95,7 +95,7 @@ public class Program {
 		        String formattedDateTime = now.format(formatter);
 		        novoEmprestimo.setDataEmprestimo(formattedDateTime);
 		        novoEmprestimo.setDataDevolucao(JOptionPane.showInputDialog("Digite a data para devolução: (dd/MM/yyyy HH:mm:ss)\n")); 
-		        loanBC.save(novoEmprestimo);
+		        loanBC.realizarEmprestimo(novoEmprestimo);
 		        break;
 
 			case 6:
@@ -113,7 +113,7 @@ public class Program {
 
 				    for (Loan emprestimo : loanList) {
 				        if (devolucaoEmprestimo == emprestimo.getId()) {
-				            loanBC.delete(devolucaoEmprestimo);
+				            loanBC.deletarEmprestimo(devolucaoEmprestimo);
 				            JOptionPane.showMessageDialog(null, "Empréstimo encerrado!");
 				            emprestimoEncontrado = true;
 				            break;

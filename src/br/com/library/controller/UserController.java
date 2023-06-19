@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.library.dao.UserDAO;
 import br.com.library.model.Book;
+import br.com.library.model.Loan;
 import br.com.library.model.User;
 
 public class UserController implements Functions{
@@ -40,6 +41,30 @@ private UserDAO dao = new UserDAO();
 
 	@Override
 	public List<Book> getAllBooks() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void realizarEmprestimo(Loan loanSaver) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atualizarEmprestimo(Loan loanSaver) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deletarEmprestimo(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Loan> getAllLoan() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
