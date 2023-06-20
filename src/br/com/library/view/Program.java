@@ -180,7 +180,7 @@ public class Program {
 					
 					case 1:
 						novoEmprestimo.setUser_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do usuário que realizará o empréstimo:\n"+userBC.getAllUser())));
-						novoEmprestimo.setBook_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser emprestado:\n"+userBC.getAllBooks())));
+						novoEmprestimo.setBook_id(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser emprestado:\n"+bookBC.getAllBooks())));
 						LocalDateTime now = LocalDateTime.now();
 						String pattern = "dd/MM/yyyy HH:mm:ss";
 						DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
