@@ -83,7 +83,7 @@ public class Loan{
 				+ "ID DO USUÁRIO: "+user_id+"\n"
 				+ "ID DO LIVRO: "+book_id+"\n"
 				+ "DATA DE EMPRÉSTIMO: "+dataEmprestimo+"\n"
-				+ "DATA DE DEVOLUÇÃO: "+dataDevolucao
+				+ "DATA PARA DEVOLUÇÃO: "+dataDevolucao
 				+ "\n--------------------------------------------------------------\n";
 
 	}
